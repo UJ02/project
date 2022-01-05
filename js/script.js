@@ -20,7 +20,7 @@ var equal = document.getElementById("equal");
 var equation = document.getElementById("equation");
 var result = document.getElementById("result");
 
-var count = 0, i=0, out, operator;
+var out, operator;
 
 AC.addEventListener('click',()=>{
     equation.innerText = "";
@@ -33,11 +33,14 @@ back.addEventListener('click', ()=>{
 })
 
 addSub.addEventListener('click',()=>{
-    i++
-    if(i%2 == 0)
-        equation.innerText = "+";
-    else
-    equation.innerText = "-";
+   operator = equation.innerText.substring(equation.innerText.length - 1, equation.innerText.length);
+   if(operator == '*' || operator == '/' || operator == ''){
+       equation.innerText = equation.innerText + "-";
+   }
+   else if(operator == '+' || operator == '-'){
+       equation.innerText = equation.innerText.substring(0, equation.innerText.length - 1);
+   }
+   output();
 })
 
 one.addEventListener('click',()=>{
